@@ -1,19 +1,19 @@
 class Co {
+	// Initialise our stack of generator functions.
+	// Using a Set as opposed to an Array as it ensures each item is unique
 	constructor() {
-		// Initialise our stack of generator functions.
-		// Using a Set as opposed to an Array as it ensures each item is unique
 		this._stack = new Set()
 	}
 	
+	// Run the next step
+	// If our generator is done (calls return), remove it from the stack
+	// Each `Tick`, loop through our stack, calling each generator function
 	tick() {
 		// TODO Find a way to pass timestamp down to coroutine function
 		const next = fn => {
-			// Run the next step
 			const result = fn.next()
-			// If our generator is done (calls return), remove it from the stack
 			if (result.done) this._stack.delete(fn)
 		}
-		// Each `Tick`, loop through our stack, calling each generator function
 		this._stack.forEach(next)
 	}
 	
