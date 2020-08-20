@@ -20,6 +20,8 @@ class Co {
 	}
 }
 
+const createCo = () => new Co()
+
 const co = new Co()
 
 co.routine(function* () {
